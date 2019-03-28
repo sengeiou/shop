@@ -1,0 +1,117 @@
+server:
+  port: 8001
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 1000
+    min-spare-threads: 30
+
+# spring
+spring:
+  datasource:
+    url: jdbc:mysql://rdsb2emir2yjjry.mysql.rds.aliyuncs.com:3306/fune?useUnicode=true&characterEncoding=utf-8&useAffectedRows=true&useSSL=false&serverTimezone=Asia/Shanghai
+    username: ENC(FRkJG3JyNu7/K0XsNHcr9Q==)
+    password: ENC(wmdVNs2rTK914M5NJXfpt8/sYrcdoAUL)
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.jdbc.Driver
+
+  redis:
+    host: 10.81.245.32
+    database: 0
+    port: 6379
+    timeout: 3000ms
+
+  data:
+    mongodb:
+      uri: mongodb://10.81.245.32:27017/shop
+    elasticsearch:
+      cluster-name: d2cmall-es
+      cluster-nodes: 10.81.245.32:9300
+
+  rabbitmq:
+    addresses: 10.81.245.32
+    username: guest
+    password: ENC(PRpwXXJMcX+sAqWS0oKFEQ==)
+
+  quartz:
+    job-store-type: jdbc
+    properties:
+      org:
+        quartz:
+          jobStore:
+            isClustered: true
+            misfireThreshold: 100
+
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    serialization:
+      write-dates-as-timestamps: false
+
+  servlet:
+    multipart:
+      max-file-size: 5Mb
+      max-request-size: 5Mb
+
+# mybatis-plus
+mybatis-plus:
+  mapper-locations: classpath:/mapper/**/*.xml
+  typeAliasesPackage: com.d2c.shop.modules.*.model
+  global-config:
+    db-config:
+      id-type: id_worker
+      field-strategy: not_null
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+    sql-parser-cache: false
+  configuration:
+    auto-mapping-behavior: partial
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+#   log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+# ignored-urls
+ignored:
+  urls:
+    - /b_api/**
+    - /c_api/**
+    - /test/**
+    - /druid/**
+    - /swagger-ui.html
+    - /swagger-resources/**
+    - /swagger/**
+    - /**/v2/api-docs
+    - /**/*.js
+    - /**/*.css
+    - /**/*.png
+    - /**/*.ico
+    - /back/user/expired
+    - /back/user/insert
+
+# shop-sdk
+shop:
+  oauth:
+    wechat:
+      app-id: ENC(a2ZeusX9S6KNg8f8XmPcvjDyPDWRuErLEyoBRUvc8Qo=)
+      app-secret: ENC(1oycGoLbAUBYGUjLeKHZxqp7faBcRsbXLtLs1bMAsxygbygG7nWvoMRW67dVLNfa)
+  pay:
+    wxpay:
+      app-id: ENC(a2ZeusX9S6KNg8f8XmPcvjDyPDWRuErLEyoBRUvc8Qo=)
+      mch-id: ENC(X/yHehQ1afaGNPo0n8s41MJ6a59Q3fRM)
+      secret-key: ENC(+H0uPPJVd3fakakqjd9LXk1jNAL9gmAZOtZGYhNKwiwAHnD2oJWNV72CtzV4rRlE)
+      notify-url: http://fune.store/c_api/callback/wx_pay
+    alipay:
+      app-id: ENC(wmyWYquY+M1IpXsM3bx11M7UxdzNg1RdnfSATWAE+sg=)
+      private-key: ENC(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)
+      public-key: ENC(nsRGN4Knb6pc3uG19cus3acJMY9om1a66t18B+pScIZIElSg/5xNhJ1Hafyqas6gRAnXWpPGw/5bpIZW5lMDQiXbkdigL47RinqN1DMjy/AFKHJyVt1RAjMDwmOpYaB6Tpru3Vcdvjy648MTxlnaODEQGRq35jQ0jc9uGKKOY+RXyv3/099XJQKL8cxP1Dhd9D5JCRtPbuFzpmUvF0bSxON9MJZVUW7119Obu8N8wVsWXUkrdDQJgqvcvxf0JS7sROsliQEWyBFjELzyAEPmaM7PzT9H5hwQLogkYE5STkznqp0w3wu+fVx6DXgUIcVTKy3hDLRbg0HrMq88oYgjMD441Aqr9y19882nmDHQxiBW9rxn9MW4PVJnIVSrD5rrHsyswUAilu+L8Xkh7jYonEwcg/y2QNmkPFu4z8WqLFusmpZvPdjTAFAfXxKvSay7yiwI+XQqfzqq3dsb3PPfOBQEJRMb9yxUQzD+mRMfT9gApturRq8X1j/gusVAmOif6k3dPEURBIVhotIPba/e2b2awQVgjOM5)
+      api-url: https://openapi.alipay.com/gateway.do
+      return-url1: https://fune.store/order/detail/
+      return-url2: https://fune.store/group/
+      notify-url: https://fune.store/c_api/callback/ali_pay
+  sms:
+    dahantc:
+      account: ENC(UX8bZOr3oWSvBczS+9SsRA==)
+      password: ENC(4uCdGxmEQtkdF+Pgl+GVkIE1xpUn36f0)
+
+#logging:
+#  level:
+#    root: debug
