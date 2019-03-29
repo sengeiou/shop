@@ -65,6 +65,7 @@ public class UserOperateLog implements IUoLog, Serializable {
         this.type = type.name();
         this.target = target.name();
         this.targetId = entity.getTargetId();
+        this.shopId = entity.getShopId();
         this.pic = entity.getPic();
         this.name = entity.getName();
         this.info = entity.getInfo();
