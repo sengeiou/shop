@@ -11,7 +11,9 @@ import com.d2c.shop.common.utils.QueryUtil;
 import com.d2c.shop.modules.core.model.ShopkeeperDO;
 import com.d2c.shop.modules.product.model.ProductCategoryDO;
 import com.d2c.shop.modules.product.query.ProductCategoryQuery;
+import com.d2c.shop.modules.product.query.ProductQuery;
 import com.d2c.shop.modules.product.service.ProductCategoryService;
+import com.d2c.shop.modules.product.service.ProductService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,8 @@ public class B_ProductCategoryController extends B_BaseController {
 
     @Autowired
     private ProductCategoryService productCategoryService;
+    @Autowired
+    private ProductService productService;
 
     @ApiOperation(value = "品类查询")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
@@ -89,6 +93,9 @@ public class B_ProductCategoryController extends B_BaseController {
         Asserts.notNull(ResultCode.RESPONSE_DATA_NULL, productCategory);
         ShopkeeperDO keeper = loginKeeperHolder.getLoginKeeper();
         Asserts.eq(productCategory.getShopId(), keeper.getShopId(), "您不是本店店员");
+        ProductQuery query = new ProductQuery();
+        query.setCategoryId(id);
+        Asserts.gt(1, productService.count(QueryUtil.buildWrapper(query)), "该品类下存在商品，无法删除");
         productCategoryService.removeById(id);
         return Response.restResult(null, ResultCode.SUCCESS);
     }
