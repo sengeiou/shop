@@ -217,6 +217,10 @@ public class C_OrderController extends C_BaseController {
             }
             // 创建订单
             order = orderService.doCreate(order);
+            // 清空购物车
+            if (cartIds != null && cartIds.size() > 0) {
+                cartItemService.removeByIds(cartIds);
+            }
             return Response.restResult(order, ResultCode.SUCCESS);
         } finally {
             redisTemplate.delete("C_CREATE_ORDER::" + member.getAccount());
