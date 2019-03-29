@@ -40,6 +40,7 @@ public class OrderCrowdHandler implements OrderHandler {
                 crowdGroup.setCrowdPrice(orderItem.getRealPrice());
                 crowdGroup.setCrowdNum(product.getCrowdGroupNum());
                 crowdGroup.setDeadline(DateUtil.offsetHour(new Date(), product.getCrowdGroupTime()));
+                crowdGroup.setVirtual(orderItem.getVirtual());
                 crowdGroup.setAttendNum(1);
                 crowdGroup.setPaidNum(0);
                 crowdGroup.setStatus(0);

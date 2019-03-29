@@ -70,6 +70,9 @@ public class OrderItemDO extends BaseDelDO implements ITradeItem {
     @Assert(type = AssertEnum.NOT_NULL)
     @ApiModelProperty(value = "状态")
     private String status;
+    @Assert(type = AssertEnum.NOT_NULL)
+    @ApiModelProperty(value = "虚拟 1,0")
+    private Integer virtual;
     @ApiModelProperty(value = "支付方式")
     private String paymentType;
     @ApiModelProperty(value = "支付流水")

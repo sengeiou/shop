@@ -64,6 +64,9 @@ public class CrowdGroupDO extends BaseDO {
     @Assert(type = AssertEnum.NOT_NULL)
     @ApiModelProperty(value = "状态 1,0")
     private Integer status;
+    @Assert(type = AssertEnum.NOT_NULL)
+    @ApiModelProperty(value = "虚拟 1,0")
+    private Integer virtual;
     @ApiModelProperty(value = "头像列表")
     private String avatars;
     @TableField(exist = false)

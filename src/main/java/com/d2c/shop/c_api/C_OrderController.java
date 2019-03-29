@@ -304,6 +304,7 @@ public class C_OrderController extends C_BaseController {
     private void buildOrderItem(ProductSkuDO sku, OrderItemDO orderItem) {
         orderItem.setType(OrderDO.TypeEnum.NORMAL.name());
         orderItem.setStatus(OrderItemDO.StatusEnum.WAIT_PAY.name());
+        orderItem.setVirtual(sku.getVirtual());
         orderItem.setProductPrice(sku.getSellPrice());
         orderItem.setRealPrice(sku.getSellPrice());
         orderItem.setPayAmount(BigDecimal.ZERO);

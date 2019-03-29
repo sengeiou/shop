@@ -92,7 +92,13 @@ public class CrowdDelayedReceiver {
             }
             crowdGroupService.updateById(entity);
             OrderItemDO noi = new OrderItemDO();
-            noi.setStatus(OrderItemDO.StatusEnum.WAIT_DELIVER.name());
+            if (crowdGroup.getVirtual() == 1) {
+                // 虚拟商品明细状态-已发货
+                noi.setStatus(OrderItemDO.StatusEnum.DELIVERED.name());
+            } else {
+                // 普通商品明细状态-待发货
+                noi.setStatus(OrderItemDO.StatusEnum.WAIT_DELIVER.name());
+            }
             OrderItemQuery noiq = new OrderItemQuery();
             noiq.setCrowdId(crowdId);
             noiq.setStatus(new String[]{OrderItemDO.StatusEnum.PAID.name()});

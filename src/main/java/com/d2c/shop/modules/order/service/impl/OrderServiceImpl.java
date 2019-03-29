@@ -132,8 +132,10 @@ public class OrderServiceImpl extends BaseService<OrderMapper, OrderDO> implemen
         // 支付订单明细
         OrderItemDO oi = new OrderItemDO();
         if (order.getCrowdId() != null && order.getCrowdId() > 0) {
+            // 拼团明细状态-已支付
             oi.setStatus(OrderItemDO.StatusEnum.PAID.name());
         } else {
+            // 普通明细状态-待发货
             oi.setStatus(OrderItemDO.StatusEnum.WAIT_DELIVER.name());
         }
         oi.setPaymentType(paymentType.name());
@@ -161,7 +163,13 @@ public class OrderServiceImpl extends BaseService<OrderMapper, OrderDO> implemen
             if (cg.getCrowdNum() == cg.getPaidNum() + 1) {
                 entity.setStatus(1);
                 OrderItemDO noi = new OrderItemDO();
-                noi.setStatus(OrderItemDO.StatusEnum.WAIT_DELIVER.name());
+                if (cg.getVirtual() == 1) {
+                    // 虚拟商品明细状态-已发货
+                    noi.setStatus(OrderItemDO.StatusEnum.DELIVERED.name());
+                } else {
+                    // 普通商品明细状态-待发货
+                    noi.setStatus(OrderItemDO.StatusEnum.WAIT_DELIVER.name());
+                }
                 OrderItemQuery noiq = new OrderItemQuery();
                 noiq.setCrowdId(order.getCrowdId());
                 orderItemService.update(noi, QueryUtil.buildWrapper(noiq));

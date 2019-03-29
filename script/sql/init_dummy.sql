@@ -23,14 +23,14 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `M_MEMBER_DUMMY`;
 CREATE TABLE `M_MEMBER_DUMMY`  (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `nickname` varchar(180) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL,
-  `avatar` varchar(180) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `nickname` varchar(180) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `avatar` varchar(180) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `create_date` datetime(0) NULL DEFAULT NULL,
-  `create_man` varchar(60) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `create_man` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `modify_date` datetime(0) NULL DEFAULT NULL,
-  `modify_man` varchar(60) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `modify_man` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10001 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 10001 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of M_MEMBER_DUMMY

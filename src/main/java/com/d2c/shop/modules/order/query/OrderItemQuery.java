@@ -33,6 +33,9 @@ public class OrderItemQuery extends BaseQuery {
     @ApiModelProperty(value = "状态")
     private String[] status;
     @Condition(condition = ConditionEnum.EQ)
+    @ApiModelProperty(value = "虚拟 1,0")
+    private Integer virtual;
+    @Condition(condition = ConditionEnum.EQ)
     @ApiModelProperty(value = "拼团团ID")
     private Long crowdId;
     @Condition(condition = ConditionEnum.EQ)
