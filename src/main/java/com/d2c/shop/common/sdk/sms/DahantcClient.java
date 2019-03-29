@@ -10,6 +10,8 @@ import org.springframework.web.client.RestTemplate;
 
 import java.io.UnsupportedEncodingException;
 
+import static com.d2c.shop.common.sdk.sms.SmsConstant.ACCOUNT_SIGN;
+
 /**
  * @author Cai
  */
@@ -38,7 +40,7 @@ public class DahantcClient {
         json.put("msgid", "");
         json.put("phones", phones);
         json.put("content", content);
-        json.put("sign", null);
+        json.put("sign", ACCOUNT_SIGN);
         json.put("subcode", null);
         json.put("sendtime", null);
         try {
