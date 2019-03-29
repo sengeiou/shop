@@ -61,7 +61,7 @@ public class UserOperateLogService {
         Page<UserOperateLog> pager = new Page<>();
         pager.setCurrent(page.getCurrent());
         pager.setSize(page.getSize());
-        pager.setTotal(result.getTotalPages());
+        pager.setTotal(result.getTotalElements());
         pager.setRecords(result.getContent());
         return pager;
     }
