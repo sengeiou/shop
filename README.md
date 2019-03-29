@@ -2,7 +2,7 @@
       
 　　Mall项目的单个微服务详细案例，详见代码：https://github.com/D2C-Cai/mall  
 　　SpringBoot（2.0.5）+MybatisPlus（3.0.7）项目骨架，支持SpringSecurity+JWT权限验证，整合Redis+MongoDB+RabbitMQ+Elasticseach，Quartz定时任务，EasyPoi的Excel导出，Swagger2接口文档，工具包Lombok/FastJson/Hutool/Jasypt<br>
-　　作者QQ：[709931138]() 作者邮箱：[709931138@qq.com]() <br>
+　　作者QQ：[709931138]() 作者邮箱：[709931138@qq.com]() （代码通过公司测试人员功能测试）<br>
 　　【赋能店铺】服务端源码，低配版微店，（B端，C端，管理端）三端合一，有兴趣可以自己拆下项目
 
    <div style="width:100%"> 
@@ -1503,3 +1503,7 @@ public abstract class BaseExcelCtrl<E extends BaseDO, Q extends BaseQuery> exten
 ExportParams第一个参数表示表头名（不是文件名），第二个表示sheet表名。ModelMap里丢的几个参数，BigExcelConstants.CLASS表示具体每行对应的POJO对象，这里我们用DO对象，
 BigExcelConstants.PARAMS就是ExportParams，BigExcelConstants.DATA_PARAMS这个是Object型的数据查询参数，对应到selectListForExcelExport第一个参数，这里我们是封装的Query对象，
 BigExcelConstants.DATA_INTER这个是具体实现IExcelExportServer类的对象。至此，只要继承了BaseExcelCtrl的控制器，自动附带一个分页导出Excel的请求功能，怎么样，很酷吧!
+
+## 后续版本持续开发
+
+由于上线时间比较紧，很多功能都不是很完全，后续最紧急是加入商品搜索es的代码和订单商品活动以及供应链这些功能，如业务发展势头良好，则项目会改造为mall类似的分布式结构...
